@@ -1,6 +1,7 @@
 package com.agency.controller;
 
 import com.agency.entity.ServiceEntity;
+import com.agency.exception.MyException;
 import com.agency.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +36,8 @@ public class ServiceController {
 
     // Get Service by Id
 //@PathVariable and RequestParam
-    @GetMapping("/{asc}")
-    public ServiceEntity getServiceById(@PathVariable("asc") Long id){
+    @GetMapping("/{id}")
+    public ServiceEntity getServiceById(@PathVariable("id") Long id) throws MyException {
         return serviceService.getServiceById(id);
     }
 

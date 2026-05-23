@@ -2,7 +2,9 @@ package com.agency.service;
 
 
 import com.agency.entity.ServiceEntity;
+import com.agency.exception.MyException;
 import com.agency.repository.ServiceRepository;
+import com.agency.validator.InputValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,9 @@ public class ServiceService {
     }
 
     // Get Service by Id
-    public ServiceEntity getServiceById(Long id){
+    public ServiceEntity getServiceById(Long id) throws MyException {
+         InputValidator inputValidator = new InputValidator();
+         inputValidator.validateId(id);
          return serviceRepository.findById(id).orElse(null);
     }
 
